@@ -35,3 +35,11 @@ awk -F, '{ if (NR>1) { print $2 }}' Stats_VSMC_II_chr_snp.org.fastGWA > chrposli
 #As the UKB imputed files are in built hg37 and GTEx GWAS snps are in built hg38; Lifting over is required. Liftover from GTEx GWAS SNPs (hg38) to hg37/19 built. 
 #Tool: crossmap 
 #At first, do the crossmap and from there split it into snps_37.txt and chrpos_37.txt
+#To perform the lifting over we do need "chr" in file, for that the below awk command would be helpful. 
+```
+awk '{print "chr"$0}' chrposlist_VSMCII.txt > chrposlist_VSMCII
+```
+The instructions can be followed from here https://pythonhosted.org/CrossMap/
+```
+CrossMap.py bed hg38ToHg19.over.chain.gz chrposlist_VSMCI.bed chrposlist37_VSMC1.bed
+```
