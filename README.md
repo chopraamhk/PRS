@@ -43,3 +43,7 @@ The instructions can be followed from here https://pythonhosted.org/CrossMap/
 ```
 CrossMap.py bed hg38ToHg19.over.chain.gz chrposlist_VSMCI.bed chrposlist37_VSMC1.bed
 ```
+#for getting the snp id's
+```
+https://lh3lh3.users.sourceforge.net/ucsc-mysql.shtml
+```
