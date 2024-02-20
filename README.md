@@ -18,3 +18,19 @@ Software tool requirements:
 3. SQLite
 4. PLINK 2.0
 
+#changing variant id to chr:pos and saving a table using write.table function in R. As in GTEx files, we already do not have variant rsid's.
+```{r}
+gwas_vsmc1$SNP <- paste0("chr", gwas_vsmc1$CHR, ":", gwas_vsmc1$POS)
+gwas_vsmc2$SNP <- paste0("chr", gwas_vsmc2$CHR, ":", gwas_vsmc2$POS)
+```
+```{r}
+write.table(gwas_vsmc1, file = "/home/mchopra/Documents/PhD-Year1/GTEx_GWAS/Stats_VSMC_I_chr_snp.org.fastGWA", sep = "\t", quote = FALSE , row.names = FALSE)
+write.table(gwas_vsmc2, file = "/home/mchopra/Documents/PhD-Year1/GTEx_GWAS/Stats_VSMC_II_chr_snp.org.fastGWA", sep = "\t", quote = FALSE , row.names = FALSE)
+```
+#To save chr:pos id's in a file 
+```
+awk -F, '{ if (NR>1) { print $2 }}' Stats_VSMC_I_chr_snp.org.fastGWA > chrposlist_VSMCI.txt
+awk -F, '{ if (NR>1) { print $2 }}' Stats_VSMC_II_chr_snp.org.fastGWA > chrposlist_VSMCII.txt
+```
+#As the UKB imputed files are in built hg37 and GTEx GWAS snps are in built hg38; Lifting over is required. Liftover from GTEx GWAS SNPs (hg38) to hg37/19 built. 
+#Tool: crossmap 
