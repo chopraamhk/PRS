@@ -20,5 +20,5 @@ install.packages("SNPlocs.Hsapiens.dbSNP155.GRCh38_0.99.24.tar.gz", type = "sour
 quit()
 
 # Run your R script
-Rscript your_r_script.R
+Rscript chr_pos_to_rsid.R
 
