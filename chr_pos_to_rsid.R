@@ -2,10 +2,10 @@
 #Load packages
 library(BiocManager) #version 1.30.22
 library(BSgenome) #version 1.70.2
-library(SNPlocs.Hsapiens.dbSNP155.GRCh38)
-
+#library(SNPlocs.Hsapiens.dbSNP155.GRCh38) #if working on Rstudio
+library(SNPlocs.Hsapiens.dbSNP150.GRCh38) #if working on conda
 #getSNPlocs()
-snps <- SNPlocs.Hsapiens.dbSNP155.GRCh38
+snps <- SNPlocs.Hsapiens.dbSNP150.GRCh38
 snps
 chr22_snps <- snpsBySeqname(snps, "22") #for 1 chromosome
 chr22_snps
