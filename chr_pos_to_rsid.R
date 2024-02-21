@@ -1,5 +1,4 @@
 #!/usr/bin/Rscript
-
 #Load packages
 library(BiocManager) #version 1.30.22
 library(BSgenome) #version 1.70.2
