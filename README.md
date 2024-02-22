@@ -3,6 +3,8 @@ Paper: https://www.frontiersin.org/journals/genetics/articles/10.3389/fgene.2022
 # PRS
 The following code is to find the Polygenic risk score in UKB. 
 
+./liftOver -bedPlus=3 -tab test hg38ToHg19.over.chain.gz test_mapped test_unmapped
+
 File Requirements:
 1. ukb info+maf file
    https://biobank.ctsu.ox.ac.uk/crystal/label.cgi?id=263
