@@ -2,9 +2,13 @@ Pipeline: https://2cjenn.github.io/PRS_Pipeline/
 Paper: https://www.frontiersin.org/journals/genetics/articles/10.3389/fgene.2022.818574/full
 # PRS
 The following code is to find the Polygenic risk score in UKB. 
-
+```
+awk '{print "chr" $1, $3, $3, $2, $4, $5, $6, $7, $8, $9, $10}' Stats_VSMC_I.org.fastGWA > Stats_input_VSMCI_liftover 
+#add NR>1; it will get rid of the header. 
 ./liftOver -bedPlus=3 -tab test hg38ToHg19.over.chain.gz test_mapped test_unmapped
-
+var="CHR POS POS SNP A1 A2 N AF1 BETA SE P"
+sed -i "1s/.*/$var/" Stats_VSMCI_mapped
+```
 File Requirements:
 1. ukb info+maf file
    https://biobank.ctsu.ox.ac.uk/crystal/label.cgi?id=263
