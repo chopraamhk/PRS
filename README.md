@@ -8,6 +8,18 @@ awk '{print "chr" $1, $3, $3, $2, $4, $5, $6, $7, $8, $9, $10}' Stats_VSMC_I.org
 ./liftOver -bedPlus=3 -tab test hg38ToHg19.over.chain.gz test_mapped test_unmapped
 var="CHR POS POS SNP A1 A2 N AF1 BETA SE P"
 sed -i "1s/.*/$var/" Stats_VSMCI_mapped
+
+you do want to get rid of chr in the file
+awk '{sub(/^chr/, "", $1); print}' Stats_VSMCI_mapped > Stats_VSMCI_mapped2
+
+to add chr:pos in place of rsid
+awk '{print $1, $2, $1 ":" $2, $5, $6, $7, $8, $9, $10, $11}' Stats_VSMCI_mapped2 > Stats_VSMCI_mapped3
+var="CHR POS SNP A1 A2 N AF1 BETA SE P"
+sed -i "1s/.*/$var/" Stats_VSMCI_mapped3
+
+rm Stats_VSMCI_mapped
+rm Stats_VSMCI_mapped2
+
 ```
 File Requirements:
 1. ukb info+maf file
