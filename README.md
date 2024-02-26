@@ -20,6 +20,8 @@ sed -i "1s/.*/$var/" Stats_VSMCI_mapped3
 rm Stats_VSMCI_mapped
 rm Stats_VSMCI_mapped2
 
+./PRSice_linux --thread 4 --base Stats_VSMCI_mapped3 --chr CHR --A1 A1 --A2 A2 --stat BETA --snp SNP --bp POS --pvalue P --target /data4/mchopra/UKB_bgenfiles/qc/QC_ukb_1to22 --fastscore --bar-levels 1 --binary-target F --no-clump --or --no-regress --out PRS_VSMCI/PRS_VSMCI_output --extract PRS_VSMCI/PRS_VSMCI_output.valid
+
 ```
 File Requirements:
 1. ukb info+maf file
