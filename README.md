@@ -67,3 +67,8 @@ CrossMap.py bed hg38ToHg19.over.chain.gz chrposlist_VSMCI.bed chrposlist37_VSMC1
 ```
 https://lh3lh3.users.sourceforge.net/ucsc-mysql.shtml
 ```
+
+plink clump 
+```
+plink --bfile ../../GTEx_genotype_838 --clump Stats_VSMC_I.org.fastGWA --clump-p1 5e-6 --clump-r2 0.05 --out VSMC_clumped_r0.05
+```
