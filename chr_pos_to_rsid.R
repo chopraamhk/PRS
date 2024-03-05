@@ -1,3 +1,6 @@
+#It works but require a lot of storage and RAM. Makes the R variables for more than 2 GB. 
+#Do not recommend it. Do it on your own risk!
+
 #!/usr/bin/Rscript
 #Load packages
 library(BiocManager) #version 1.30.22
