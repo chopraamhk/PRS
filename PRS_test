@@ -23,8 +23,6 @@ With phenotype (regression is being done)
  --cov-col sex,age,age2,@PC[1-5]
  --pheno-file vsmc_cell_proportion \
  --pheno-col vsmc_I \
- --cov-file pdhp_phenocov.txt \
- --cov-col sex,age,age2,@PC[1-5]
 
 
 Step 2: 
