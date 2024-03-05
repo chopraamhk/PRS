@@ -13,7 +13,7 @@ With phenotype (regression is being done)
  --snp SNP \
  --bp POS \
  --pvalue P \
- --target /data4/mchopra/UKB_bgenfiles/qc/QC_ukb_1to22 \
+ --target gtex_file \
  --fastscore \
  --print-snp \
  --binary-target F \ 
