@@ -1,0 +1,102 @@
+Testing the effects of GTEx on UKBB to predict the cellular proportions:
+
+Step1 : 
+
+With phenotype (regression is being done) 
+
+ ./PRSice_linux \
+ --base Stats_VSMCI_mapped3 \
+ --chr CHR \
+ --A1 A1 \
+ --A2 A2 \
+ --stat BETA \
+ --snp SNP \
+ --bp POS \
+ --pvalue P \
+ --target /data4/mchopra/UKB_bgenfiles/qc/QC_ukb_1to22 \
+ --fastscore \
+ --print-snp \
+ --binary-target F \ 
+ --beta \ 
+ --out PRS_VSMCI/PRS_VSMCI_output \ 
+ --cov-file ukb_cov.txt \
+ --cov-col sex,age,age2,@PC[1-5]
+ --pheno-file vsmc_cell_proportion \
+ --pheno-col vsmc_I \
+ --cov-file pdhp_phenocov.txt \
+ --cov-col sex,age,age2,@PC[1-5]
+
+
+Step 2: 
+
+Without phenotype (--no-regress)
+
+ ./PRSice_linux \
+ --base Stats_VSMCI_mapped3 \
+ --chr CHR \
+ --A1 A1 \
+ --A2 A2 \
+ --stat BETA \
+ --snp SNP \
+ --bp POS \
+ --pvalue P \
+ --target /data4/mchopra/UKB_bgenfiles/qc/QC_ukb_1to22 \
+ --fastscore \
+ --print-snp \
+ --binary-target F \ 
+ --beta \ 
+ --no-regress \
+ --out PRS_VSMCI/PRS_VSMCI_output \ 
+ --cov-file ukb_cov.txt \
+ --cov-col sex,age,age2,@PC[1-5] \
+ --cov-file pdhp_phenocov.txt 
+ 
+ Step 3: 
+ 
+ Without Phenotype but testing on UKBB 
+ 
+  ./PRSice_linux \
+ --base Stats_VSMCI_mapped3 \
+ --chr CHR \
+ --A1 A1 \
+ --A2 A2 \
+ --stat BETA \
+ --snp SNP \
+ --bp POS \
+ --pvalue P \
+ --target /data4/mchopra/UKB_bgenfiles/qc/QC_ukb_1to22 \
+ --fastscore \
+ --print-snp \
+ --binary-target F \ 
+ --beta \ 
+ --no-regress \
+ --out PRS_VSMCI/PRS_VSMCI_output \ 
+ --cov-file ukb_cov.txt \
+ --cov-col sex,age,age2,@PC[1-5] \
+ --cov-file pdhp_phenocov.txt 
+ 
+ Step 4: 
+ 
+ Find the correlation in between the distensibility and cellular proportions in UKBB 
+ 
+ ##intersect function to merge the files
+>file1 <- read.table("/home/mchopra/Documents/PhD-Year1/pheno_aao.txt", header = TRUE) 
+
+>rownames(file1) <- file1[,1]
+>file1
+
+>rownames(ukb_vsmcI) <- ukb_vsmcI[,1]
+>ukb_vsmcI
+
+>intersect <- intersect(rownames(file1), rownames(ukb_vsmcI))
+
+>intersect
+
+>file1 <- file1[intersect, ] 
+>file1
+>ukb_vsmcI <- ukb_vsmcI[intersect,]
+>ukb_vsmcI
+
+>cor.test(file1$trait1, ukb_vsmcI$Pt_1, method = "pearson")
+
+
